@@ -1,0 +1,5 @@
+remove-regresison-suite-from-default
+stub-testcases-inapplicable-for-qtee
+add-libteec-headers
+cmaketoolchain-txt
+build-xtest-qtee

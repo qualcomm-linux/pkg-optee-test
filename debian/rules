@@ -1,4 +1,10 @@
 #!/usr/bin/make -f
 
+export TA_DEV_KIT_DIR = /usr/lib/optee-os-dev/vexpress-qemu_armv8a/
+
 %:
-	dh $@
+	dh $@ --buildsystem=cmake
+
+override_dh_auto_configure:
+	dh_auto_configure -- \
+	-DTA_DEV_KIT_DIR=/usr/lib/optee-os-dev/vexpress-qemu_armv8a/

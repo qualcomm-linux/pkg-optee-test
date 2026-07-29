@@ -1,5 +1,6 @@
-template (1.0.0-0qcom1~) UNRELEASED; urgency=medium
+mink-optee-test (4.0.0-1) UNRELEASED; urgency=medium
 
-  * Populate.
+  [Abhinaba Rakshit]
+  * Initial release.
 
- -- Github Service Bot <githubservice@qti.qualcomm.com>  Tue, 07 Oct 2025 14:21:59 -0700
+ -- Abhinaba Rakshit <abhinaba.rakshit@oss.qualcomm.com>  Wed, 15 Jul 2026 15:43:18 +0530

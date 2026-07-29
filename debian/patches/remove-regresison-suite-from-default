@@ -1,0 +1,32 @@
+Description: Remove regression test-suite from Qualcomm forked xtest_qtee
+Author: Abhinaba Rakshit <abhinaba.rakshit@oss.qualcomm.com>
+Origin: other, Qualcomm forked mink specific changes over OPTEE-Test
+Last-Update: 2026-07-14
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+Index: optee_test/host/xtest/xtest_main.c
+===================================================================
+--- optee_test.orig/host/xtest/xtest_main.c
++++ optee_test/host/xtest/xtest_main.c
+@@ -47,6 +47,12 @@ char *xtest_tee_name = NULL;
+ unsigned int level = 0;
+ static const char glevel[] = "0";
+ 
++#ifdef WITH_REGRESSION_TESTS
++#define REGRESSION_SUITE "regression"
++#else
++#define REGRESSION_SUITE ""
++#endif
++
+ #ifdef WITH_GP_TESTS
+ #define GP_SUITE	"+gp"
+ #else
+@@ -65,7 +71,7 @@ static const char glevel[] = "0";
+ #define FFA_SPMC_SUITE	""
+ #endif
+ 
+-static char gsuitename[] = "regression" GP_SUITE PKCS11_SUITE FFA_SPMC_SUITE;
++static char gsuitename[] = REGRESSION_SUITE GP_SUITE PKCS11_SUITE FFA_SPMC_SUITE;
+ 
+ void usage(char *program);
+ 

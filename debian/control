@@ -1,23 +1,28 @@
-Source: template
-Section: libs
-Maintainer: Maintainers.pkg-template <Maintainers.pkg-template@qualcomm.com>
-Uploaders:
- FirstName LastName <user@oss.qualcomm.com>,
-Build-Depends: debhelper-compat (= 13)
-Standards-Version: 4.7.4
-Homepage: https://github.com/qualcomm-linux/<upstream>
-Vcs-Browser: https://github.com/qualcomm-linux/pkg-<upstream>
-Vcs-Git: https://github.com/qualcomm-linux/pkg-<upstream>.git
+Source: mink-optee-test
+Maintainer: Abhinaba Rakshit <abhinaba.rakshit@oss.qualcomm.com>
+Standards-Version: 4.6.2
+Section: devel
+Priority: optional
+Rules-Requires-Root: no
+Build-Depends: debhelper-compat (= 13),
+               cmake,
+               libssl-dev,
+               optee-os-dev,
+               libminkipc-dev,
+               mink-optee-client-dev
+Homepage: https://github.com/qualcomm-linux/pkg-optee-test
+Vcs-Git: https://github.com/qualcomm-linux/pkg-optee-test -b debian/qcom-next
+Vcs-Browser: https://github.com/qualcomm-linux/pkg-optee-test
 
-Package: template1
-Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: Template package
- This is an example package to demonstrate the Qualcomm OSS development flow
-
-Package: template-dev
-Section: libdevel
-Architecture: any
-Depends: template1 (= ${binary:Version}), ${misc:Depends}
-Description: Template package dev
- This is an example package to demonstrate the Qualcomm OSS development flow
+Package: xtest-qtee
+Architecture: arm64
+Section: devel
+Description: Qualcomm QTEE sanity testsuite built against MinkIPC
+ This package provides xtest-qtee, a Qualcomm-adapted build of the upstream
+ OP-TEE sanity testsuite. It is built against the Qualcomm MinkIPC transport
+ stack (libminkteec, libminkadaptor) and the Qualcomm-adapted PKCS#11 client
+ library (libckqteec), targeting the Qualcomm Trusted Execution Environment
+ (QTEE) rather than the upstream OP-TEE supplicant daemon.
+ .
+ The package includes the xtest_qtee QTEE sanity testsuite.
+Depends: ${misc:Depends}, ${shlibs:Depends}

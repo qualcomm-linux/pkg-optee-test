@@ -1,0 +1,55 @@
+mink-optee-test for Debian
+==========================
+
+Overview
+--------
+This package provides xtest-qtee, a Qualcomm-adapted build of the upstream
+OP-TEE test suite (optee_test). It targets the Qualcomm Trusted Execution
+Environment (QTEE) via the MinkIPC transport stack instead of the upstream
+OP-TEE supplicant daemon.
+
+The installed binary is xtest_qtee, located in /usr/bin/.
+
+Qualcomm-specific Adaptations
+------------------------------
+The following Debian patches are applied on top of the upstream optee_test
+source to produce the QTEE-targeted build:
+
+  * remove-regresison-suite-from-default
+    Removes the upstream regression test suite from the default test suite
+    string. Regression tests can still be enabled at compile time by defining
+    WITH_REGRESSION_TESTS.
+
+  * stub-testcases-inapplicable-for-qtee
+    Guards test cases that are not supported by QTEE (e.g. pkcs11_1016 RNG
+    tests) behind a BUILD_FOR_OPTEE preprocessor flag so they are omitted
+    from the QTEE build.
+
+  * add-libteec-headers
+    Bundles the GlobalPlatform TEE Client API headers (tee_client_api.h and
+    related) from optee-client v4.0.0 directly into the source tree under
+    libteec/include/. This avoids a build-time dependency on the upstream
+    libteec-dev package, which is incompatible with the MinkIPC transport.
+
+  * cmaketoolchain-txt
+    Updates CMakeToolchain.txt to target aarch64 (arm64) and sets the
+    cross-compiler to aarch64-linux-gnu-gcc / aarch64-linux-gnu-g++.
+
+  * build-xtest-qtee
+    Replaces the upstream CMakeLists.txt build logic with a self-contained
+    build that:
+      - Renames the project and output binary to xtest_qtee.
+      - Removes the CMakeToolchain.txt default (cross-compilation is handled
+        by the Debian build system).
+      - Links against the Qualcomm MinkIPC libraries (minkteec, minkadaptor)
+        and the Qualcomm PKCS#11 client (ckqteec) instead of the upstream
+        libteec / tee-supplicant.
+
+Packages
+--------
+
+xtest-qtee
+ The `xtest-qtee` package provides a suite of cross-platform test utilities
+ designed for Qualcomm Trusted Execution Environment (QTEE) validation. It
+ includes test binaries used to verify the correctness and integrity of QTEE
+ components on Qualcomm-based platforms.
