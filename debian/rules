@@ -1,7 +1,5 @@
 #!/usr/bin/make -f
 
-export TA_DEV_KIT_DIR = /usr/lib/optee-os-dev/vexpress-qemu_armv8a/
-
 %:
 	dh $@ --buildsystem=cmake
 
