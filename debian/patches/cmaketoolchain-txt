@@ -1,4 +1,4 @@
-Description: <short description, required>
+Description: Update the CMakeToolchain.txt inline with minkipc
 Author: Abhinaba Rakshit <abhinaba.rakshit@oss.qualcomm.com>
 Origin: other, Qualcomm forked mink specific changes over OPTEE-Test
 Last-Update: 2026-07-14
