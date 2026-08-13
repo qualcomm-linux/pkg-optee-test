@@ -1,16 +1,13 @@
-mink-optee-test (4.0.0-1~bpo13+1) trixie; urgency=medium
+mink-optee-test (4.0.0-0qli+staging1~bpo13+1) trixie; urgency=medium
 
   [ Abhinaba Rakshit ]
-  * Rebuild for trixie
+  * Rebuild for trixie.
 
- -- Abhinaba Rakshit <arakshit@hu-arakshit-hyd.qualcomm.com>  Thu, 30 Jul 2026 11:46:26 +0530
+ -- Abhinaba Rakshit <abhinaba.rakshit@oss.qualcomm.com>  Thu, 13 Aug 2026 12:17:16 +0530
 
-mink-optee-test (4.0.0-1) UNRELEASED; urgency=medium
+mink-optee-test (4.0.0-0qli+staging1) UNRELEASED; urgency=medium
 
   [ Abhinaba Rakshit ]
-  * Initial release.
-
-  [ GitHub Service Bot ]
-  * New upstream release
+  * Initial release with upstream 4.0.0.
 
  -- GitHub Service Bot <githubservice@qti.qualcomm.com>  Wed, 29 Jul 2026 06:52:17 +0000
