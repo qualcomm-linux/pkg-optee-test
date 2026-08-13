@@ -1,6 +1,6 @@
-mink-optee-test (4.0.0-0qli+staging1) UNRELEASED; urgency=medium
+mink-optee-test (4.0.0-0qli+staging1) forky; urgency=medium
 
   [ Abhinaba Rakshit ]
   * Initial release with upstream 4.0.0.
 
- -- GitHub Service Bot <githubservice@qti.qualcomm.com>  Wed, 29 Jul 2026 06:52:17 +0000
+ -- Debusine Action Bot <noreply@bot.invalid>  Thu, 13 Aug 2026 15:47:35 +0000
