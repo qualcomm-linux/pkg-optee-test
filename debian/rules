@@ -1,6 +1,8 @@
 #!/usr/bin/make -f
 
 export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+# Upstream 4.0.0 sources trigger this warning with GCC 15+
+export DEB_CFLAGS_MAINT_APPEND = -Wno-unterminated-string-initialization
 
 %:
 	dh $@ --buildsystem=cmake
