@@ -4,12 +4,14 @@ Uploaders:
  Lukas Märdian <lukas.maerdian@oss.qualcomm.com>,
 Standards-Version: 4.6.2
 Section: devel
-Build-Depends: debhelper-compat (= 13),
-               cmake,
-               libssl-dev,
-               optee-os-dev,
-               libminkipc-dev,
-               mink-optee-client-dev
+Build-Depends:
+ debhelper-compat (= 13),
+ cmake,
+ libminkadaptor-dev,
+ libminkteec-dev,
+ libssl-dev,
+ mink-optee-client-dev,
+ optee-os-dev,
 Homepage: https://github.com/qualcomm-linux/pkg-optee-test
 Vcs-Git: https://github.com/qualcomm-linux/pkg-optee-test -b qcom/debian/latest
 Vcs-Browser: https://github.com/qualcomm-linux/pkg-optee-test
