@@ -1,18 +1,25 @@
-Description: Build Qualcomm forked xtest_qtee test-suite
-Author: Abhinaba Rakshit <abhinaba.rakshit@oss.qualcomm.com>
-Origin: other, Qualcomm forked mink specific changes over OPTEE-Test
-Last-Update: 2026-07-11
+Description: Build xtest against the Mink TEE client libraries
+ Replace the upstream CMakeLists.txt with a self-contained build that links
+ xtest against libminkteec, libminkadaptor and libckteec instead of the
+ upstream libteec and tee-supplicant.
+Author: Harshal Dev <harshal.dev@oss.qualcomm.com>
+Origin: upstream, https://github.com/qualcomm/minkipc/commit/9e79336
+Comment: Backported from minkipc's optee-test/ vendored copy, which uses
+ a git submodule layout. To apply it to the pristine upstream tarball, the
+ submodule-relative include paths (optee-client/..., optee_os/...) were
+ changed to the system locations: TA_DEV_KIT_DIR for the optee_os headers.
+ The toolchain file include was dropped, as cross-building is handled by
+ dpkg-buildpackage.
 ---
-This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
-Index: optee_test/CMakeLists.txt
+Index: pkg-optee-test/CMakeLists.txt
 ===================================================================
---- optee_test.orig/CMakeLists.txt
-+++ optee_test/CMakeLists.txt
+--- pkg-optee-test.orig/CMakeLists.txt
++++ pkg-optee-test/CMakeLists.txt
 @@ -1,8 +1,8 @@
 -cmake_minimum_required (VERSION 3.4)
 -project (optee_test C)
 +cmake_minimum_required(VERSION 3.10)
-+project (xtest_qtee C)
++project (xtest C)
  
 -# Default cross compile settings
 -set (CMAKE_TOOLCHAIN_FILE CMakeToolchain.txt)
@@ -21,7 +28,7 @@ Index: optee_test/CMakeLists.txt
  
  set (OPTEE_TEST_ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR})
  ################################################################################
-@@ -18,10 +18,14 @@ add_compile_options (
+@@ -18,10 +18,13 @@ add_compile_options (
  	-Wmissing-prototypes -Wnested-externs
  	-Wpointer-arith -Wshadow -Wstrict-prototypes
  	-Wswitch-default -Wunsafe-loop-optimizations
@@ -30,7 +37,6 @@ Index: optee_test/CMakeLists.txt
   	-Wno-missing-field-initializers
 -	-Wno-unused-parameter
 +	-Wno-unused-parameter -Wno-alloc-size
-+	-Wno-unterminated-string-initialization
  )
 +if(CFG_WERROR)
 +    add_compile_options(-Werror)
@@ -38,7 +44,7 @@ Index: optee_test/CMakeLists.txt
  
  find_program(CCACHE_FOUND ccache)
  if(CCACHE_FOUND)
-@@ -30,5 +34,125 @@ if(CCACHE_FOUND)
+@@ -30,5 +33,124 @@ if(CCACHE_FOUND)
  endif(CCACHE_FOUND)
  
  add_subdirectory (ta)
@@ -147,7 +153,6 @@ Index: optee_test/CMakeLists.txt
 +	PRIVATE host/supp_plugin/include
 +	PRIVATE host/xtest/adbg/include
 +	PRIVATE ${TA_DEV_KIT_DIR}/host_include
-+	PRIVATE libteec/include
 +	PRIVATE ${CMAKE_CURRENT_BINARY_DIR}
 +	${GP_INCLUDES}
 +)
@@ -155,7 +160,7 @@ Index: optee_test/CMakeLists.txt
 +target_link_libraries (${PROJECT_NAME}
 +	PRIVATE m
 +	PRIVATE xtest-ta-headers
-+	PRIVATE ckqteec
++	PRIVATE ckteec
 +	PRIVATE minkteec
 +	PRIVATE minkadaptor
 +	PRIVATE ${CMAKE_THREAD_LIBS_INIT}

@@ -1,0 +1,29 @@
+Description: Rename xtest to xtest_qtee and link libckqteec
+ Avoid clashing with upstream's xtest binary and follow the libckteec to
+ libckqteec rename done in mink-optee-client.
+Author: Harshal Dev <harshal.dev@oss.qualcomm.com>
+Origin: upstream, https://github.com/qualcomm/minkipc/commit/f9b8329a4b7de1dc8ca0de036f968fa8617a6dff
+Comment: Backported from minkipc's optee-test/ vendored copy. Only the
+ CMakeLists.txt part was needed; the unterminated-string warning
+ suppression of commit 38cdcc8 is handled via debian/rules instead.
+---
+Index: pkg-optee-test/CMakeLists.txt
+===================================================================
+--- pkg-optee-test.orig/CMakeLists.txt
++++ pkg-optee-test/CMakeLists.txt
+@@ -1,5 +1,5 @@
+ cmake_minimum_required(VERSION 3.10)
+-project (xtest C)
++project (xtest_qtee C)
+ 
+ option(CFG_WERROR "Build with -Werror" FALSE)
+ option(CFG_PKCS11_TA "Build with PKCS11" TRUE)
+@@ -144,7 +144,7 @@ target_include_directories(${PROJECT_NAM
+ target_link_libraries (${PROJECT_NAME}
+ 	PRIVATE m
+ 	PRIVATE xtest-ta-headers
+-	PRIVATE ckteec
++	PRIVATE ckqteec
+ 	PRIVATE minkteec
+ 	PRIVATE minkadaptor
+ 	PRIVATE ${CMAKE_THREAD_LIBS_INIT}
