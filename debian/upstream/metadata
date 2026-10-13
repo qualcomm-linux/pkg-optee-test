@@ -1,0 +1,9 @@
+# See https://wiki.debian.org/UpstreamMetadata for more info/fields.
+# mink-optee-test is based upon upstream optee_test v4.0.0 and
+# vendored in:
+# https://github.com/qualcomm/minkipc/tree/main/optee-test
+
+Bug-Database: https://github.com/OP-TEE/optee_test/issues
+Bug-Submit: https://github.com/OP-TEE/optee_test/issues/new
+Repository-Browse: https://github.com/OP-TEE/optee_test
+Repository: https://github.com/OP-TEE/optee_test.git
