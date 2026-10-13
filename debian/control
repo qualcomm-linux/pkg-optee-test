@@ -7,6 +7,7 @@ Section: devel
 Build-Depends:
  debhelper-compat (= 13),
  cmake,
+ pkgconf,
  libminkadaptor-dev,
  libminkteec-dev,
  libssl-dev,
