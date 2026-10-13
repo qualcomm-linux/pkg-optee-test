@@ -1,5 +1,5 @@
-remove-regresison-suite-from-default
-stub-testcases-inapplicable-for-qtee
+remove-regression-suite-from-default.patch
+stub-testcases-inapplicable-for-qtee.patch
 build-xtest.patch
 rename-xtest-to-xtest-qtee.patch
 find-mink-libs-via-pkgconf.patch

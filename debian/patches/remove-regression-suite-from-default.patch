@@ -1,13 +1,15 @@
 Description: Remove regression test-suite from Qualcomm forked xtest_qtee
 Author: Abhinaba Rakshit <abhinaba.rakshit@oss.qualcomm.com>
-Origin: other, Qualcomm forked mink specific changes over OPTEE-Test
+Forwarded: not-needed
 Last-Update: 2026-07-14
 ---
-This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
-Index: optee_test/host/xtest/xtest_main.c
-===================================================================
---- optee_test.orig/host/xtest/xtest_main.c
-+++ optee_test/host/xtest/xtest_main.c
+ host/xtest/xtest_main.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/host/xtest/xtest_main.c b/host/xtest/xtest_main.c
+index 5e907e2..476f89e 100644
+--- a/host/xtest/xtest_main.c
++++ b/host/xtest/xtest_main.c
 @@ -47,6 +47,12 @@ char *xtest_tee_name = NULL;
  unsigned int level = 0;
  static const char glevel[] = "0";

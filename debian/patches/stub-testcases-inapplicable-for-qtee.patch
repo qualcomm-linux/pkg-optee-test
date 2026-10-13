@@ -1,13 +1,15 @@
 Description: Stub testcases not supported by QTEE in xtest_qtee
 Author: Abhinaba Rakshit <abhinaba.rakshit@oss.qualcomm.com>
-Origin: other, Qualcomm forked mink specific changes over OPTEE-Test
+Forwarded: not-needed
 Last-Update: 2026-07-14
 ---
-This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
-Index: optee_test/host/xtest/pkcs11_1000.c
-===================================================================
---- optee_test.orig/host/xtest/pkcs11_1000.c
-+++ optee_test/host/xtest/pkcs11_1000.c
+ host/xtest/pkcs11_1000.c | 32 ++++++++++++++++++++++++++++++++
+ 1 file changed, 32 insertions(+)
+
+diff --git a/host/xtest/pkcs11_1000.c b/host/xtest/pkcs11_1000.c
+index a55691d..690610f 100644
+--- a/host/xtest/pkcs11_1000.c
++++ b/host/xtest/pkcs11_1000.c
 @@ -4098,6 +4098,7 @@ close_lib:
  ADBG_CASE_DEFINE(pkcs11, 1015, xtest_pkcs11_test_1015,
  		 "PKCS11: Test C_CopyObject()");
@@ -24,7 +26,7 @@ Index: optee_test/host/xtest/pkcs11_1000.c
  
  static CK_RV derive_sym_key(CK_SESSION_HANDLE session,
  			    CK_OBJECT_HANDLE parent_key,
-@@ -4629,6 +4631,8 @@ ADBG_CASE_DEFINE(pkcs11, 1017, xtest_pkc
+@@ -4629,6 +4631,8 @@ ADBG_CASE_DEFINE(pkcs11, 1017, xtest_pkcs11_test_1017,
  
  /* Digest test patterns */
  static const char digest_test_pattern[] = "The quick brown fox jumps over the lazy dog";
@@ -33,7 +35,7 @@ Index: optee_test/host/xtest/pkcs11_1000.c
  static const char digest_test_pattern_empty[] = "";
  
  /* MD5 checksums for digest test patterns */
-@@ -4640,16 +4644,20 @@ static const uint8_t digest_test_pattern
+@@ -4640,16 +4644,20 @@ static const uint8_t digest_test_pattern_empty_md5[] = {
  	0xd4, 0x1d, 0x8c, 0xd9, 0x8f, 0x00, 0xb2, 0x04, 0xe9, 0x80, 0x09, 0x98,
  	0xec, 0xf8, 0x42, 0x7e
  };
@@ -54,7 +56,7 @@ Index: optee_test/host/xtest/pkcs11_1000.c
  
  /* SHA-224 checksums for digest test patterns */
  static const uint8_t digest_test_pattern_sha224[] = {
-@@ -4657,11 +4665,14 @@ static const uint8_t digest_test_pattern
+@@ -4657,11 +4665,14 @@ static const uint8_t digest_test_pattern_sha224[] = {
  	0x9a, 0xa2, 0x32, 0x5d, 0x24, 0x30, 0x58, 0x7d, 0xdb, 0xc0, 0xc3, 0x8b,
  	0xad, 0x91, 0x15, 0x25
  };
@@ -69,7 +71,7 @@ Index: optee_test/host/xtest/pkcs11_1000.c
  
  /* SHA-256 checksums for digest test patterns */
  static const uint8_t digest_test_pattern_sha256[] = {
-@@ -4669,11 +4680,14 @@ static const uint8_t digest_test_pattern
+@@ -4669,11 +4680,14 @@ static const uint8_t digest_test_pattern_sha256[] = {
  	0xb0, 0x08, 0x2e, 0x4f, 0x8d, 0x56, 0x51, 0xe4, 0x6d, 0x3c, 0xdb, 0x76,
  	0x2d, 0x02, 0xd0, 0xbf, 0x37, 0xc9, 0xe5, 0x92
  };
@@ -84,7 +86,7 @@ Index: optee_test/host/xtest/pkcs11_1000.c
  
  /* SHA-384 checksums for digest test patterns */
  static const uint8_t digest_test_pattern_sha384[] = {
-@@ -4682,12 +4696,15 @@ static const uint8_t digest_test_pattern
+@@ -4682,12 +4696,15 @@ static const uint8_t digest_test_pattern_sha384[] = {
  	0x40, 0x11, 0xe3, 0x31, 0x7d, 0xbf, 0x9a, 0x50, 0x9c, 0xb1, 0xe5, 0xdc,
  	0x1e, 0x85, 0xa9, 0x41, 0xbb, 0xee, 0x3d, 0x7f, 0x2a, 0xfb, 0xc9, 0xb1
  };
@@ -100,7 +102,7 @@ Index: optee_test/host/xtest/pkcs11_1000.c
  
  /* SHA-512 checksums for digest test patterns */
  static const uint8_t digest_test_pattern_sha512[] = {
-@@ -4698,6 +4715,8 @@ static const uint8_t digest_test_pattern
+@@ -4698,6 +4715,8 @@ static const uint8_t digest_test_pattern_sha512[] = {
  	0xe1, 0xbf, 0xd7, 0x09, 0x78, 0x21, 0x23, 0x3f, 0xa0, 0x53, 0x8f, 0x3d,
  	0xb8, 0x54, 0xfe, 0xe6
  };
@@ -109,7 +111,7 @@ Index: optee_test/host/xtest/pkcs11_1000.c
  static const uint8_t digest_test_pattern_empty_sha512[] = {
  	0xcf, 0x83, 0xe1, 0x35, 0x7e, 0xef, 0xb8, 0xbd, 0xf1, 0x54, 0x28, 0x50,
  	0xd6, 0x6d, 0x80, 0x07, 0xd6, 0x20, 0xe4, 0x05, 0x0b, 0x57, 0x15, 0xdc,
-@@ -4706,6 +4725,7 @@ static const uint8_t digest_test_pattern
+@@ -4706,6 +4725,7 @@ static const uint8_t digest_test_pattern_empty_sha512[] = {
  	0x63, 0xb9, 0x31, 0xbd, 0x47, 0x41, 0x7a, 0x81, 0xa5, 0x38, 0x32, 0x7a,
  	0xf9, 0x27, 0xda, 0x3e
  };
@@ -117,7 +119,7 @@ Index: optee_test/host/xtest/pkcs11_1000.c
  
  #define DIGEST_TEST(_test_name, _mecha, _data, _digest) \
  	{ \
-@@ -4717,6 +4737,7 @@ static const uint8_t digest_test_pattern
+@@ -4717,6 +4737,7 @@ static const uint8_t digest_test_pattern_empty_sha512[] = {
  		.digest_size = sizeof(_digest) \
  	}
  
@@ -149,7 +151,7 @@ Index: optee_test/host/xtest/pkcs11_1000.c
  
  #define WRAPPED_TEST_KEY_SIZE	48
  
-@@ -6449,6 +6473,7 @@ ADBG_CASE_DEFINE(pkcs11, 1020, xtest_pkc
+@@ -6449,6 +6473,7 @@ ADBG_CASE_DEFINE(pkcs11, 1020, xtest_pkcs11_test_1020,
  		.data_size = sizeof(_data) - 1, \
  	}
  
@@ -181,7 +183,7 @@ Index: optee_test/host/xtest/pkcs11_1000.c
  
  #define RSA_AES_MAX_KEY_SIZE 32
  
-@@ -8196,6 +8224,7 @@ ADBG_CASE_DEFINE(pkcs11, 1025, xtest_pkc
+@@ -8196,6 +8224,7 @@ ADBG_CASE_DEFINE(pkcs11, 1025, xtest_pkcs11_test_1025,
  
  #define RSA_AES_WRAP_AES(_size) { .aes = { .size = (_size) } }
  
