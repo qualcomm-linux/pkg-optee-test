@@ -12,7 +12,7 @@ Build-Depends:
  libssl-dev,
  mink-optee-client-dev,
  optee-os-dev,
-Homepage: https://github.com/qualcomm-linux/pkg-optee-test
+Homepage: https://github.com/qualcomm/minkipc/commits/main/optee-test
 Vcs-Git: https://github.com/qualcomm-linux/pkg-optee-test.git
 Vcs-Browser: https://github.com/qualcomm-linux/pkg-optee-test
 
