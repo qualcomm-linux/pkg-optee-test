@@ -1,0 +1,6 @@
+Version: 5
+
+# QTEE only works with the 4.0.x client APIs
+Template: Github
+Owner: OP-TEE
+Project: optee_test
