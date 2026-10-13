@@ -4,8 +4,6 @@ Uploaders:
  Lukas Märdian <lukas.maerdian@oss.qualcomm.com>,
 Standards-Version: 4.6.2
 Section: devel
-Priority: optional
-Rules-Requires-Root: no
 Build-Depends: debhelper-compat (= 13),
                cmake,
                libssl-dev,
@@ -18,7 +16,6 @@ Vcs-Browser: https://github.com/qualcomm-linux/pkg-optee-test
 
 Package: xtest-qtee
 Architecture: arm64
-Section: devel
 Description: Qualcomm QTEE sanity testsuite built against MinkIPC
  This package provides xtest-qtee, a Qualcomm-adapted build of the upstream
  OP-TEE sanity testsuite. It is built against the Qualcomm MinkIPC transport
