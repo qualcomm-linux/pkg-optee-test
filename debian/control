@@ -26,4 +26,6 @@ Description: Qualcomm QTEE sanity testsuite built against MinkIPC
  (QTEE) rather than the upstream OP-TEE supplicant daemon.
  .
  The package includes the xtest_qtee QTEE sanity testsuite.
-Depends: ${misc:Depends}, ${shlibs:Depends}
+Depends:
+ ${misc:Depends},
+ ${shlibs:Depends},
