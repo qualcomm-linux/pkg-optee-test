@@ -6,26 +6,36 @@ Forwarded: https://github.com/qualcomm/minkipc/pull/110
 ---
 Index: pkg-optee-test/CMakeLists.txt
 ===================================================================
---- pkg-optee-test.orig/CMakeLists.txt
-+++ pkg-optee-test/CMakeLists.txt
-@@ -37,6 +37,9 @@ add_subdirectory (ta)
+--- pkg-optee-test.orig/CMakeLists.txt	2026-10-13 12:22:39.833815215 +0200
++++ pkg-optee-test/CMakeLists.txt	2026-10-13 12:22:48.644692201 +0200
+@@ -37,6 +37,9 @@
  ################################################################################
  # Packages
  ################################################################################
 +find_package(PkgConfig REQUIRED)
-+pkg_check_modules(MINKTEEC REQUIRED IMPORTED_TARGET minkteec)
-+pkg_check_modules(MINKADAPTOR REQUIRED IMPORTED_TARGET minkadaptor)
++pkg_check_modules(MINKTEEC REQUIRED minkteec)
++pkg_check_modules(MINKADAPTOR REQUIRED minkadaptor)
  find_package(Threads REQUIRED)
  if(NOT THREADS_FOUND)
  	message(FATAL_ERROR "Threads not found")
-@@ -145,8 +148,8 @@ target_link_libraries (${PROJECT_NAME}
+@@ -140,12 +143,18 @@
+ 	${GP_INCLUDES}
+ )
+ 
++# Search the minkipc include dir last: its tee_client_api.h is the libminkteec
++# one, while xtest needs the optee-client header from /usr/include.
++foreach(dir ${MINKTEEC_INCLUDE_DIRS} ${MINKADAPTOR_INCLUDE_DIRS})
++	target_compile_options(${PROJECT_NAME} PRIVATE -idirafter ${dir})
++endforeach()
++
+ target_link_libraries (${PROJECT_NAME}
  	PRIVATE m
  	PRIVATE xtest-ta-headers
  	PRIVATE ckqteec
 -	PRIVATE minkteec
 -	PRIVATE minkadaptor
-+	PRIVATE PkgConfig::MINKTEEC
-+	PRIVATE PkgConfig::MINKADAPTOR
++	PRIVATE ${MINKTEEC_LINK_LIBRARIES}
++	PRIVATE ${MINKADAPTOR_LINK_LIBRARIES}
  	PRIVATE ${CMAKE_THREAD_LIBS_INIT}
  	PRIVATE ${OPENSSL_PRIVATE_LINK}
  )
