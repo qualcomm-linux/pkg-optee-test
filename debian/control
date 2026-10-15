@@ -17,7 +17,7 @@ Homepage: https://github.com/qualcomm/minkipc/commits/main/optee-test
 Vcs-Git: https://github.com/qualcomm-linux/pkg-optee-test.git
 Vcs-Browser: https://github.com/qualcomm-linux/pkg-optee-test
 
-Package: xtest-qtee
+Package: mink-optee-test-qtee
 Architecture: arm64
 Description: Qualcomm QTEE sanity testsuite built against MinkIPC
  This package provides xtest-qtee, a Qualcomm-adapted build of the upstream
