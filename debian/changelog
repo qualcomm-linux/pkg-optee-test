@@ -29,8 +29,9 @@ mink-optee-test (4.0.0-0qli+staging2~) UNRELEASED; urgency=medium
   * d/patches: Fix xtest pkcs11 static initialization issue, caused by
     compound literal address.
     - d/p/pkcs11-fix-static-init-compound-literal.patch
+  * d/control: Rename binary package to mink-optee-test-qtee.
 
- -- Lukas Märdian <lukas.maerdian@oss.qualcomm.com>  Tue, 13 Oct 2026 16:32:25 +0200
+ -- Lukas Märdian <lukas.maerdian@oss.qualcomm.com>  Thu, 15 Oct 2026 12:20:19 +0200
 
 mink-optee-test (4.0.0-0qli+staging1) forky; urgency=medium
 
